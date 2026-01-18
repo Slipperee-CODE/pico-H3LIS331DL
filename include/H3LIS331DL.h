@@ -29,9 +29,10 @@
 #define ACCEL_SCALE_400 0b00110000
 #define ACCEL_SCALE ACCEL_SCALE_400
 
+//ACCEL_SENSITIVITY in milli-gs / digit
 #if ACCEL_SCALE == ACCEL_SCALE_100
-    #define ACCEL_SENSITIVITY 49 //in milli-gs / digit
-#elif ACCEL_SCALE == ACCEL_SCALE_200
+    #define ACCEL_SENSITIVITY 49 
+#elif ACCEL_SCALE == ACCEL_SCALE_200 
     #define ACCEL_SENSITIVITY 98
 #elif ACCEL_SCALE == ACCEL_SCALE_400
     #define ACCEL_SENSITIVITY 195
@@ -52,10 +53,10 @@
 
 void accelerometer_init(i2c_inst_t* i2c_port, uint8_t i2c_sda, uint8_t i2c_scl);
 
-float* accelerometer_get_all_axis();
+double* accelerometer_get_all_axis();
 
-float accelerometer_get_x();
+double accelerometer_get_x();
 
-float accelerometer_get_y();
+double accelerometer_get_y();
 
-float accelerometer_get_z();
+double accelerometer_get_z();

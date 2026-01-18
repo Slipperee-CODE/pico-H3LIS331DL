@@ -1,6 +1,3 @@
-#include <stdint.h>
-#include "pico/stdlib.h"
-#include "hardware/i2c.h"
 #include "H3LIS331DL.h"
 
 static i2c_inst_t* I2C_PORT = NULL;
@@ -25,7 +22,7 @@ void accelerometer_init(i2c_inst_t* i2c_port, uint8_t i2c_sda, uint8_t i2c_scl){
     write_to_register(CTRL_REG4_REGISTER_ADDRESS, CTRL_REG4_REGISTER_VALUE); //Updates block data update type, endianness, and accel scale 
 }
 
-float* accelerometer_get_all_axis(){ //Maybe make a struct to store/access accelerometer data more easily 
+double* accelerometer_get_all_axis(){ //Maybe make a struct to store/access accelerometer data more easily 
     uint8_t firstRegister = (1 << 7) | LSB_X_REGISTER_ADDRESS; //MSB is 1 for auto-increment during register reads
     i2c_write_blocking(I2C_PORT, ACCELEROMETER_ADDRESS, &firstRegister, 1, true); //pretty sure this function handles setting the LSB of ACCELEROMETER_ADDRESS to 1 for write bc all I2C addresses are 7 bits 
     uint8_t buffer[6]; //need enough space for MSB register and LSB register of each axis
@@ -38,14 +35,14 @@ float* accelerometer_get_all_axis(){ //Maybe make a struct to store/access accel
     return results;
 }
 
-float accelerometer_get_x(){
+double accelerometer_get_x(){
     return accelerometer_get_all_axis()[0];
 }
 
-float accelerometer_get_y(){
+double accelerometer_get_y(){
     return accelerometer_get_all_axis()[1];
 }
 
-float accelerometer_get_z(){
+double accelerometer_get_z(){
     return accelerometer_get_all_axis()[2];
 }
