@@ -49,5 +49,5 @@ double accelerometer_get_z(){
 }
 
 void pico_H3LIS331DL_is_library_accesible(){
-    printf("Accessing the library is functioning properly! \n");
+    printf("Accessing the pico_H3LIS331DL library is functioning properly! \n");
 }
