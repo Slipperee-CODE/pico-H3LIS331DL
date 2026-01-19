@@ -61,4 +61,4 @@ double accelerometer_get_y();
 
 double accelerometer_get_z();
 
-void does_library_work();
+void pico_H3LIS331DL_is_library_accesible();

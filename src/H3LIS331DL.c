@@ -48,6 +48,6 @@ double accelerometer_get_z(){
     return accelerometer_get_all_axis()[2];
 }
 
-void does_library_work(){
+void pico_H3LIS331DL_is_library_accesible(){
     printf("Accessing the library is functioning properly! \n");
 }
