@@ -10,9 +10,10 @@ int main()
     stdio_init_all();
 
     accelerometer_init(ACCELEROMETER_I2C_PORT, ACCELEROMETER_I2C_SDA, ACCELEROMETER_I2C_SCL);
+    
     while (true) {
         printf("This loop prints the accelerometer's x-axis output in gs! \n");
-        does_library_work();
+        pico_H3LIS331DL_is_library_accesible();
         printf("Acceleration along x-axis is %d gs\n", accelerometer_get_x());
     }
 }
